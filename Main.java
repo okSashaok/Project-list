@@ -22,8 +22,13 @@ public class Main {
         }
     }
     private static void deletingTask(String text){
-        if(!task.removeIf(item -> item.contains(text))){
+        if(!task.remove(text)){
             System.out.print("Дел с таким текстом нет!\n");
+        }
+    }
+    private static void deletingTasks(String text){
+        if(!task.removeIf(item -> item.contains(text))){
+            System.out.print("Дел с таким фрагментом нет!\n");
         }
     }
     private static boolean menu(){
@@ -34,7 +39,8 @@ public class Main {
             1. Добавить дело
             2. Показать дела
             3. Удалить дело по номеру
-            4. Удалить дело по названию или фрагменту
+            4. Удалить дело по названию
+            5. Удалить дело по фрагменту
             Ваш выбор:""" + " ");
             switch(scanner.nextLine()){
                 case "":return true;
@@ -52,6 +58,10 @@ public class Main {
                 case "4":{
                     System.out.print("Введите задачу для удаления: ");
                     deletingTask(scanner.nextLine());
+                }break;
+                case "5":{
+                    System.out.print("Введите фрагмент задачи для удаления: ");
+                    deletingTasks(scanner.nextLine());
                 }break;
             }
             outputTasks();
