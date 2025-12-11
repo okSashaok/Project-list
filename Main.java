@@ -22,7 +22,7 @@ public class Main {
         }
     }
     private static void deletingTask(String text){
-        if(!task.remove(text)){
+        if(!task.removeIf(item -> item.contains(text))){
             System.out.print("Дел с таким текстом нет!\n");
         }
     }
@@ -34,7 +34,7 @@ public class Main {
             1. Добавить дело
             2. Показать дела
             3. Удалить дело по номеру
-            4. Удалить дело по названию
+            4. Удалить дело по названию или фрагменту
             Ваш выбор:""" + " ");
             switch(scanner.nextLine()){
                 case "":return true;
